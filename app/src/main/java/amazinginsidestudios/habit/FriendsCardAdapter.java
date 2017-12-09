@@ -10,14 +10,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import amazinginsidestudios.habit.components.Habit;
-import amazinginsidestudios.habit.components.HabitTemplate;
 
 /**
  * Created by Sangeeth Nandakumar on 07-12-2017.
@@ -56,9 +54,9 @@ public class FriendsCardAdapter extends BaseAdapter {
         View v=null;
 
             v=View.inflate(context,R.layout.card_friend_template,null);
-            name=(TextView)v.findViewById(R.id.card_friends_template_name);
-            popupmenu_friends=(ImageButton)v.findViewById(R.id.popupmenu_friends);
-            card_template_friends_bg=(ImageView)v.findViewById(R.id.card_template_friends_bg);
+        name = v.findViewById(R.id.card_friends_template_name);
+        popupmenu_friends = v.findViewById(R.id.popupmenu_friends);
+        card_template_friends_bg = v.findViewById(R.id.card_template_friends_bg);
 
             name.setText(habits.get(i).getName());
             popupmenu_friends.setOnClickListener(new View.OnClickListener()
@@ -75,7 +73,6 @@ public class FriendsCardAdapter extends BaseAdapter {
                             switch (menuItem.getItemId())
                             {
                                 case R.id.menu_refresh:
-                                    Toast.makeText(context, "Syncing habit", Toast.LENGTH_SHORT).show();
                                     break;
                             }
                             return false;

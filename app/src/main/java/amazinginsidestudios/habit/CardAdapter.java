@@ -1,11 +1,6 @@
 package amazinginsidestudios.habit;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.graphics.Palette;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,14 +10,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import amazinginsidestudios.habit.components.HabitTemplate;
 import amazinginsidestudios.habit.components.Habit;
+import amazinginsidestudios.habit.components.HabitTemplate;
 
 /**
  * Created by Sangeeth Nandakumar on 07-12-2017.
@@ -63,8 +57,8 @@ public class CardAdapter extends BaseAdapter {
         if (habits.get(i).getHabitTemplate()== HabitTemplate.YES_NO)
         {
             v=View.inflate(context,R.layout.card_yes_no,null);
-            name=(TextView)v.findViewById(R.id.card_yes_no_name);
-            popupmenu_yes_no=(ImageButton)v.findViewById(R.id.popupmenu_yes_no);
+            name = v.findViewById(R.id.card_yes_no_name);
+            popupmenu_yes_no = v.findViewById(R.id.popupmenu_yes_no);
 
             name.setText(habits.get(i).getName());
             popupmenu_yes_no.setOnClickListener(new View.OnClickListener()
@@ -81,7 +75,6 @@ public class CardAdapter extends BaseAdapter {
                             switch (menuItem.getItemId())
                             {
                                 case R.id.menu_sync_now:
-                                    Toast.makeText(context, "Syncing habit", Toast.LENGTH_SHORT).show();
                                     break;
                             }
                             return false;
@@ -96,9 +89,9 @@ public class CardAdapter extends BaseAdapter {
         else
         {
             v=View.inflate(context,R.layout.card_template,null);
-            name=(TextView)v.findViewById(R.id.card_template_name);
-            card_template_bg=(ImageView)v.findViewById(R.id.card_template_bg);
-            popupmenu_template=(ImageButton)v.findViewById(R.id.popupmenu_template);
+            name = v.findViewById(R.id.card_template_name);
+            card_template_bg = v.findViewById(R.id.card_template_bg);
+            popupmenu_template = v.findViewById(R.id.popupmenu_template);
 
             name.setText(habits.get(i).getName());
             popupmenu_template.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +106,6 @@ public class CardAdapter extends BaseAdapter {
                             switch (menuItem.getItemId())
                             {
                                 case R.id.menu_sync_now:
-                                    Toast.makeText(context, "Syncing habit", Toast.LENGTH_SHORT).show();
                                     break;
                             }
                             return false;

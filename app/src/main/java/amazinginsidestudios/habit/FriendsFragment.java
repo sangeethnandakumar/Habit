@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +29,9 @@ public class FriendsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Toast.makeText(getContext(), "Working...", Toast.LENGTH_SHORT).show();
         rootView = inflater.inflate(R.layout.fragment_friends, container, false);
 
-        cardFriendsList=(ListView)rootView.findViewById(R.id.card_friends_list);
+        cardFriendsList = rootView.findViewById(R.id.card_friends_list);
         List<Habit> myhabits=new ArrayList<>();
 
         Habit temp=new Habit(getContext());

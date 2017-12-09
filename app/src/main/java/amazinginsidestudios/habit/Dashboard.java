@@ -1,27 +1,26 @@
 package amazinginsidestudios.habit;
 
 import android.app.ActionBar;
-import android.app.FragmentTransaction;
+import android.app.Dialog;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.view.View;
+import android.view.Window;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import amazinginsidestudios.habit.components.Habit;
 
 public class Dashboard extends AppCompatActivity {
     android.support.v7.app.ActionBar actionBar;
     ViewPager viewPager;
+    FloatingActionButton fab;
     private DashboardFragmentAdapter dashboardFragmentAdapter;
 
     public void init()
     {
+        fab = findViewById(R.id.fab);
         dashboardFragmentAdapter = new DashboardFragmentAdapter(getSupportFragmentManager());
-        viewPager=(ViewPager)findViewById(R.id.viewpager);
+        viewPager = findViewById(R.id.viewpager);
         viewPager.setAdapter(dashboardFragmentAdapter);
         actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -51,6 +50,16 @@ public class Dashboard extends AppCompatActivity {
         actionBar.addTab(actionBar.newTab().setText("Friends").setTabListener(tabListener));
         actionBar.addTab(actionBar.newTab().setText("Active").setTabListener(tabListener));
         actionBar.addTab(actionBar.newTab().setText("Completed").setTabListener(tabListener));
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(Dashboard.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.fab_options);
+                dialog.show();
+            }
+        });
     }
 
     @Override
