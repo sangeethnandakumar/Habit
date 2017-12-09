@@ -50,7 +50,7 @@ public class FriendsCardAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup)
     {
-        final ImageView card_template_bg;
+        final ImageView card_template_friends_bg;
         final TextView name;
         final ImageButton popupmenu_friends;
         View v=null;
@@ -58,6 +58,7 @@ public class FriendsCardAdapter extends BaseAdapter {
             v=View.inflate(context,R.layout.card_friend_template,null);
             name=(TextView)v.findViewById(R.id.card_friends_template_name);
             popupmenu_friends=(ImageButton)v.findViewById(R.id.popupmenu_friends);
+            card_template_friends_bg=(ImageView)v.findViewById(R.id.card_template_friends_bg);
 
             name.setText(habits.get(i).getName());
             popupmenu_friends.setOnClickListener(new View.OnClickListener()
@@ -83,6 +84,12 @@ public class FriendsCardAdapter extends BaseAdapter {
                     friendspopup.show();
                 }
             });
+
+        switch (habits.get(i).getHabitTemplate())
+        {
+            case NIGHT:
+                Picasso.with(context).load("http://amazinginside.esy.es/amazinginsidestudios/habit/night_profile.jpg").into(card_template_friends_bg);
+        }
         return v;
     }
 

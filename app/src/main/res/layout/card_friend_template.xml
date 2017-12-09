@@ -23,7 +23,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/menu_card_friends"
+                    android:id="@+id/card_template_friends_bg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#263238"
@@ -66,7 +66,7 @@
                     android:background="?attr/selectableItemBackground"
                     android:text="VIEW"
                     android:textColor="#bdbdbd"
-                    card_view:layout_constraintBottom_toBottomOf="@+id/menu_card_friends"
+                    card_view:layout_constraintBottom_toBottomOf="@+id/card_template_friends_bg"
                     card_view:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView

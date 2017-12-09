@@ -41,11 +41,6 @@ public class FriendsFragment extends Fragment {
         temp.setHabitTemplate(HabitTemplate.NIGHT);
         myhabits.add(temp);
 
-        Habit temp1=new Habit(getContext());
-        temp1.setName("Read Newspaper");
-        temp1.setHabitTemplate(HabitTemplate.YES_NO);
-        myhabits.add(temp1);
-
         Habit temp2=new Habit(getContext());
         temp2.setName("Read a Book");
         temp2.setHabitTemplate(HabitTemplate.NIGHT);
