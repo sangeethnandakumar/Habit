@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#d50000</color>
+    <color name="colorPrimaryDark">#d50000</color>
+    <color name="colorAccent">#a6a6a6</color>
+
+    <color name="progressGood">#00c204</color>
+    <color name="progressOkey">#fcac00</color>
+    <color name="progressBad">#d50000</color>
+
+    <color name="tagPrivate">#0d47a1</color>
+    <color name="tagPublic">#2e7d32</color>
+    <color name="tagSynced">#fcac00</color>
+    <color name="tagNonSynced">#a6a6a6</color>
+    <color name="tagDevice">#494948</color>
+
+</resources>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardBackgroundColor="#e2e2e2"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="227dp"
+        android:layout_margin="8dp"
+        card_view:cardCornerRadius="4dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="DECEMBER 2017"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/popupmenu_yes_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@null"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:srcCompat="@drawable/card_menupopup_black" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="188dp"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:id="@+id/card_yes_no_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/autor"
+                android:text="Read Newspaper?"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:typeface="normal"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="86dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="98"
+                android:textColor="@color/progressGood"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/card_yes_no_name" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="PERCENTAGE"
+                android:textSize="12sp"
+                card_view:layout_constraintStart_toEndOf="@+id/textView3"
+                card_view:layout_constraintTop_toBottomOf="@+id/card_yes_no_name" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="HEALTHY"
+                android:textStyle="bold"
+                card_view:layout_constraintStart_toEndOf="@+id/textView3"
+                card_view:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="86dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/tagPrivate"
+                android:fontFamily="monospace"
+                android:padding="3dp"
+                android:text="PRIVATE"
+                android:textColor="#fff"
+                android:textSize="8sp"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@color/tagSynced"
+                android:fontFamily="monospace"
+                android:padding="3dp"
+                android:text="SYNCED"
+                android:textColor="#fff"
+                android:textSize="8sp"
+                card_view:layout_constraintBaseline_toBaselineOf="@+id/textView6"
+                card_view:layout_constraintStart_toEndOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="15"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                card_view:layout_constraintStart_toEndOf="@+id/textView3"
+                card_view:layout_constraintTop_toBottomOf="@+id/card_yes_no_name" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="DAYS"
+                android:textSize="12sp"
+                card_view:layout_constraintStart_toEndOf="@+id/textView8"
+                card_view:layout_constraintTop_toBottomOf="@+id/card_yes_no_name" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="TO GO"
+                android:textStyle="bold"
+                card_view:layout_constraintStart_toEndOf="@+id/textView8"
+                card_view:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@color/tagDevice"
+                android:fontFamily="monospace"
+                android:padding="3dp"
+                android:text="LeEco Le2 LeE311"
+                android:textColor="#fff"
+                android:textSize="8sp"
+                card_view:layout_constraintBaseline_toBaselineOf="@+id/textView7"
+                card_view:layout_constraintStart_toEndOf="@+id/textView7" />
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="60dp"
+                android:layout_height="66dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/card_yes_no_name"
+                card_view:srcCompat="@drawable/newspaper" />
+
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="328dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                card_view:cardBackgroundColor="#d1d1d1"
+                card_view:cardCornerRadius="4dp"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/textView7">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="7">
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackground"
+                        android:text="SKIP"
+                        android:textColor="#757575"
+                        tools:layout_editor_absoluteX="156dp"
+                        tools:layout_editor_absoluteY="146dp" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:background="?attr/selectableItemBackground"
+                        android:text="NO"
+                        tools:layout_editor_absoluteX="148dp"
+                        tools:layout_editor_absoluteY="189dp" />
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:background="?attr/selectableItemBackground"
+                        android:text="YES"
+                        android:textColor="@color/tagPublic"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="205dp" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

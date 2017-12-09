@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_sync_now"
+        android:title="Sync now" />
+    <item
+        android:id="@+id/menu_refresh"
+        android:title="Refresh" />
+    <item
+        android:id="@+id/menu_archive"
+        android:title="Archive" />
+    <item
+        android:id="@+id/menu_habit_info"
+        android:title="Habit info" />
+</menu>
