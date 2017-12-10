@@ -2,22 +2,32 @@ package amazinginsidestudios.habit;
 
 import android.app.ActionBar;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
 
 
 public class Dashboard extends AppCompatActivity {
     android.support.v7.app.ActionBar actionBar;
     ViewPager viewPager;
     FloatingActionButton fab;
+    Dialog dialog;
+    ImageButton new_note, new_habit;
     private DashboardFragmentAdapter dashboardFragmentAdapter;
 
     public void init()
     {
+        dialog = new Dialog(Dashboard.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.fab_options);
+        new_note = dialog.findViewById(R.id.new_note);
+        new_habit = dialog.findViewById(R.id.new_habit);
+
         fab = findViewById(R.id.fab);
         dashboardFragmentAdapter = new DashboardFragmentAdapter(getSupportFragmentManager());
         viewPager = findViewById(R.id.viewpager);
@@ -54,12 +64,10 @@ public class Dashboard extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog dialog = new Dialog(Dashboard.this);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.fab_options);
                 dialog.show();
             }
         });
+
     }
 
     @Override
@@ -68,5 +76,22 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         init();
         viewPager.setCurrentItem(1);
+        new_note.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                Intent intent = new Intent(Dashboard.this, NewNote.class);
+                startActivity(intent);
+            }
+        });
+
+        new_habit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                Intent intent = new Intent(Dashboard.this, NewHabit.class);
+                startActivity(intent);
+            }
+        });
     }
 }

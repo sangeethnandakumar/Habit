@@ -34,12 +34,12 @@ public class FriendsFragment extends Fragment {
         cardFriendsList = rootView.findViewById(R.id.card_friends_list);
         List<Habit> myhabits=new ArrayList<>();
 
-        Habit temp=new Habit(getContext());
+        Habit temp = new Habit();
         temp.setName("Test");
         temp.setHabitTemplate(HabitTemplate.NIGHT);
         myhabits.add(temp);
 
-        Habit temp2=new Habit(getContext());
+        Habit temp2 = new Habit();
         temp2.setName("Read a Book");
         temp2.setHabitTemplate(HabitTemplate.NIGHT);
         myhabits.add(temp2);

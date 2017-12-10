@@ -78,7 +78,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/imageButton"
+                        android:id="@+id/new_note"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
@@ -108,6 +108,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
+                        android:id="@+id/new_habit"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"

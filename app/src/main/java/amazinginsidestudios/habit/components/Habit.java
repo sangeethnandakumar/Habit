@@ -1,92 +1,54 @@
 package amazinginsidestudios.habit.components;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
-
-import java.util.UUID;
-
 /**
  * Created by Sangeeth Nandakumar on 07-12-2017.
  */
 
 public class Habit {
-    private Context context;
-    private String name;
-    private LogLevel logLevel;
-    private String logTime;
-    private String aim;
-    private String catageory;
-    private TargetLevel targetLevel;
-    private String color;
-    private int totalDays;
-    private int completedDays;
-    private boolean publicVisibility;
-    private HabitTemplate habitTemplate;
-    private String account;
-    private String fingerprint;
-    private String dateCreated;
-    private String dateExpired;
-    private String dateRemoved;
-    private String device;
-    private String appVersion;
-    private boolean cloudSynced;
-    private String dateSynced;
-    private HabitState habitState;
+    public String name;
+    public LogLevel logLevel;
+    public String logTime;
+    public String aim;
+    public String catageory;
+    public TargetLevel targetLevel;
+    public Color color;
+    public String totalDays;
+    public String completedDays;
+    public Booler publicVisibility;
+    public HabitTemplate habitTemplate;
+    public String account;
+    public String fingerprint;
+    public String dateCreated;
+    public String dateExpired;
+    public String dateRemoved;
+    public String device;
+    public String appVersion;
+    public Booler cloudSynced;
+    public String dateSynced;
+    public HabitState habitState;
     //Properties
-    private boolean neverSync;
-    private boolean discloseProgressToPublic;
+    public Booler neverSync;
+    public Booler discloseProgressToPublic;
     //Contents
-    private String xmlData;
+    public String xmlData;
 
-    private String generateFingerprint()
-    {
-        String uuid = UUID.randomUUID().toString();
-        return uuid;
+    public Habit() {
     }
 
-    private String generateAppVersion()
-    {
-        PackageManager manager = context.getPackageManager();
-        PackageInfo info = null;
-        try
-        {
-            info = manager.getPackageInfo(context.getPackageName(), 0);
-        }
-        catch (PackageManager.NameNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        String version = info.versionName;
-        return version;
+    public void setPublicVisibility(Booler publicVisibility) {
+        this.publicVisibility = publicVisibility;
     }
 
-    private String generateTimestamp()
-    {
-        Long tsLong = System.currentTimeMillis()/1000;
-        String ts = tsLong.toString();
-        return ts;
+    public void setCloudSynced(Booler cloudSynced) {
+        this.cloudSynced = cloudSynced;
     }
 
-    public Habit(Context context)
-    {
-        this.context=context;
-        fingerprint=generateFingerprint();
-        appVersion=generateAppVersion();
-        device= Build.MANUFACTURER +";"+Build.BRAND+";"+Build.MODEL;
-        logLevel=LogLevel.DAILY;
-        dateCreated=generateTimestamp();
-        targetLevel=TargetLevel.LIMITED;
-        completedDays=0;
-        totalDays=0;
-        publicVisibility=false;
-        habitTemplate = HabitTemplate.YES_NO;
-        cloudSynced=false;
-        neverSync=false;
-        discloseProgressToPublic=true;
-        habitState=HabitState.ACTIVE;
-        xmlData="<?xml version='1.0' encoding='UTF-8'?><habit></habit>";
+    public void setNeverSync(Booler neverSync) {
+        this.neverSync = neverSync;
+    }
+
+    public void setDiscloseProgressToPublic(Booler discloseProgressToPublic) {
+        this.discloseProgressToPublic = discloseProgressToPublic;
     }
 
     public String getName() {
@@ -137,36 +99,32 @@ public class Habit {
         this.targetLevel = targetLevel;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
-    public int getTotalDays() {
+    public String getTotalDays() {
         return totalDays;
     }
 
-    public void setTotalDays(int totalDays) {
+    public void setTotalDays(String totalDays) {
         this.totalDays = totalDays;
     }
 
-    public int getCompletedDays() {
+    public String getCompletedDays() {
         return completedDays;
     }
 
-    public void setCompletedDays(int completedDays) {
+    public void setCompletedDays(String completedDays) {
         this.completedDays = completedDays;
     }
 
-    public boolean isPublicVisibility() {
+    public Booler isPublicVisibility() {
         return publicVisibility;
-    }
-
-    public void setPublicVisibility(boolean publicVisibility) {
-        this.publicVisibility = publicVisibility;
     }
 
     public HabitTemplate getHabitTemplate() {
@@ -233,12 +191,8 @@ public class Habit {
         this.appVersion = appVersion;
     }
 
-    public boolean isCloudSynced() {
+    public Booler isCloudSynced() {
         return cloudSynced;
-    }
-
-    public void setCloudSynced(boolean cloudSynced) {
-        this.cloudSynced = cloudSynced;
     }
 
     public String getDateSynced() {
@@ -249,28 +203,20 @@ public class Habit {
         this.dateSynced = dateSynced;
     }
 
-    public boolean isNeverSync() {
-        return neverSync;
-    }
-
-    public void setNeverSync(boolean neverSync) {
-        this.neverSync = neverSync;
-    }
-
-    public boolean isDiscloseProgressToPublic() {
-        return discloseProgressToPublic;
-    }
-
-    public void setDiscloseProgressToPublic(boolean discloseProgressToPublic) {
-        this.discloseProgressToPublic = discloseProgressToPublic;
-    }
-
     public HabitState getHabitState() {
         return habitState;
     }
 
     public void setHabitState(HabitState habitState) {
         this.habitState = habitState;
+    }
+
+    public Booler isNeverSync() {
+        return neverSync;
+    }
+
+    public Booler isDiscloseProgressToPublic() {
+        return discloseProgressToPublic;
     }
 
     public String getXmlData() {
