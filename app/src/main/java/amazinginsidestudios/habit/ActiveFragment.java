@@ -3,7 +3,6 @@ package amazinginsidestudios.habit;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
@@ -17,13 +16,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import amazinginsidestudios.habit.components.Booler;
-import amazinginsidestudios.habit.components.Color;
 import amazinginsidestudios.habit.components.Habit;
-import amazinginsidestudios.habit.components.HabitState;
-import amazinginsidestudios.habit.components.HabitTemplate;
-import amazinginsidestudios.habit.components.LogLevel;
-import amazinginsidestudios.habit.components.TargetLevel;
+import amazinginsidestudios.habit.engines.Database;
 import amazinginsidestudios.habit.engines.HabitSyncer;
 
 
@@ -55,7 +49,10 @@ public class ActiveFragment extends Fragment {
         cardList = rootView.findViewById(R.id.card_list);
         List<Habit> habits = new ArrayList<>();
 
-        Habit habit = new Habit();
+        Database database = new Database(getContext());
+        habits = database.fetchHabits("sangeethnandakumar@gmail.com");
+
+        /*Habit habit = new Habit();
         habit.setName("Do Pushups");
         habit.setAccount("sangeethnandakumar@gmail.com");
         habit.setAim("To build up my body");
@@ -80,7 +77,6 @@ public class ActiveFragment extends Fragment {
         habit.setAppVersion(generateAppVersion());
         habit.setNeverSync(Booler.FALSE);
         habit.setPublicVisibility(Booler.FALSE);
-
 
         Habit habit1 = new Habit();
         habit1.setName("Do Pushups");
@@ -107,18 +103,14 @@ public class ActiveFragment extends Fragment {
         habit1.setAppVersion(generateAppVersion());
         habit1.setNeverSync(Booler.FALSE);
         habit1.setPublicVisibility(Booler.FALSE);
-
         habits.add(habit);
-        habits.add(habit1);
+        habits.add(habit1);*/
 
         cardList.setAdapter(new CardAdapter(getActivity(), habits));
-
         HabitSyncer habitSyncer = new HabitSyncer(getContext(), habits, getActivity());
         habitSyncer.cloudSync();
-
         return rootView;
     }
-
 
     public String generateFingerprint() {
         String uuid = UUID.randomUUID().toString();

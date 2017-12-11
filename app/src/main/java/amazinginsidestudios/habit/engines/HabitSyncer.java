@@ -58,7 +58,7 @@ public class HabitSyncer {
             public void onServerResponded(String s) {
                 Gson gson = new Gson();
                 UpdateHabitAcknowledge acknowledge = gson.fromJson(s, UpdateHabitAcknowledge.class);
-                Toast.makeText(context, String.valueOf(acknowledge.getStatus()), Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
