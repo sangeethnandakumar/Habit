@@ -42,14 +42,15 @@ public class ActiveFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_active, container, false);
 
-        String xml = "<book category=\"children\">\n" +
-                "    <title>Harry Potter</title>\n" +
-                "    <author>J K. Rowling</author>\n" +
-                "    <year>2005</year>\n" +
-                "    <price>29.99</price>\n" +
-                "  </book>";
-        xml = xml.replace("\"", "_");
-        xml = xml.replace("\n", "");
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
+                "<habit>\n" +
+                "    <property\n" +
+                "        name=\"distance\"\n" +
+                "        value=\"12Km\"/>\n" +
+                "    <property\n" +
+                "        name=\"calories\"\n" +
+                "        value=\"500\"/>\n" +
+                "</habit>";
 
         cardList = rootView.findViewById(R.id.card_list);
         List<Habit> habits = new ArrayList<>();

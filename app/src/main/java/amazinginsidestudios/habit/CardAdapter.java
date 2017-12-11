@@ -17,6 +17,7 @@ import java.util.List;
 
 import amazinginsidestudios.habit.components.Habit;
 import amazinginsidestudios.habit.components.HabitTemplate;
+import amazinginsidestudios.habit.engines.HabitSyncer;
 
 /**
  * Created by Sangeeth Nandakumar on 07-12-2017.
@@ -25,6 +26,7 @@ import amazinginsidestudios.habit.components.HabitTemplate;
 public class CardAdapter extends BaseAdapter {
     Context context;
     List<Habit> habits;
+    HabitSyncer habitSyncer;
 
     public CardAdapter(Context context, List<Habit> habits) {
         this.context = context;
@@ -106,6 +108,7 @@ public class CardAdapter extends BaseAdapter {
                             switch (menuItem.getItemId())
                             {
                                 case R.id.menu_sync_now:
+
                                     break;
                             }
                             return false;
