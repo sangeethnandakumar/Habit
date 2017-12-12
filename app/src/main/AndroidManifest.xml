@@ -10,10 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/DayLight">
         <activity
             android:name=".Dashboard"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/DayLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,11 +22,11 @@
         </activity>
         <activity
             android:name=".NewHabit"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/DayLight" />
 
         <activity
             android:name=".NewNote"
-            android:theme="@style/AppTheme">
+            android:theme="@style/DayLight">
 
         </activity>
     </application>
