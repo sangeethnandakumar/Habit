@@ -1,20 +1,17 @@
 package amazinginsidestudios.habit;
 
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.text.format.DateFormat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import amazinginsidestudios.habit.components.Habit;
 import amazinginsidestudios.habit.engines.Database;
@@ -26,6 +23,10 @@ import amazinginsidestudios.habit.engines.HabitSyncer;
  */
 public class ActiveFragment extends Fragment {
     ListView cardList;
+    CardAdapter adapter;
+    Database database;
+    List<Habit> habits;
+    SwipeRefreshLayout swipe;
     private View rootView = null;
 
     public ActiveFragment() {
@@ -35,104 +36,51 @@ public class ActiveFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_active, container, false);
+        swipe = rootView.findViewById(R.id.swiperefresh);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                syncWithServer();
+            }
+        });
 
-        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
-                "<habit>\n" +
-                "    <property\n" +
-                "        name=\"distance\"\n" +
-                "        value=\"12Km\"/>\n" +
-                "    <property\n" +
-                "        name=\"calories\"\n" +
-                "        value=\"500\"/>\n" +
-                "</habit>";
-
-        cardList = rootView.findViewById(R.id.card_list);
-        List<Habit> habits = new ArrayList<>();
-
-        Database database = new Database(getContext());
-        habits = database.fetchHabits("sangeethnandakumar@gmail.com");
-
-        /*Habit habit = new Habit();
-        habit.setName("Do Pushups");
-        habit.setAccount("sangeethnandakumar@gmail.com");
-        habit.setAim("To build up my body");
-        habit.setCatageory("Health");
-        habit.setCloudSynced(Booler.FALSE);
-        habit.setColor(Color.RED);
-        habit.setCompletedDays("0");
-        habit.setDateExpired("2017-12-09 11:03 p.m.");
-        habit.setDateRemoved("2017-12-09 11:03 p.m.");
-        habit.setDiscloseProgressToPublic(Booler.FALSE);
-        habit.setHabitState(HabitState.ACTIVE);
-        habit.setHabitTemplate(HabitTemplate.NIGHT);
-        habit.setLogLevel(LogLevel.DAILY);
-        habit.setTotalDays("30");
-        habit.setTargetLevel(TargetLevel.LIMITED);
-        habit.setDateSynced("2017-12-09 11:03 p.m.");
-        habit.setLogTime("11:03 p.m.");
-        habit.setXmlData(xml);
-        habit.setFingerprint(generateFingerprint());
-        habit.setDateCreated(generateTimestamp());
-        habit.setDevice(Build.MANUFACTURER + "|" + Build.BRAND + "|" + Build.MODEL);
-        habit.setAppVersion(generateAppVersion());
-        habit.setNeverSync(Booler.FALSE);
-        habit.setPublicVisibility(Booler.FALSE);
-
-        Habit habit1 = new Habit();
-        habit1.setName("Do Pushups");
-        habit1.setAccount("sangeethnandakumar@gmail.com");
-        habit1.setAim("To build up my body");
-        habit1.setCatageory("Health");
-        habit1.setCloudSynced(Booler.FALSE);
-        habit1.setColor(Color.RED);
-        habit1.setCompletedDays("0");
-        habit1.setDateExpired("2017-12-09 11:03 p.m.");
-        habit1.setDateRemoved("2017-12-09 11:03 p.m.");
-        habit1.setDiscloseProgressToPublic(Booler.FALSE);
-        habit1.setHabitState(HabitState.ACTIVE);
-        habit1.setHabitTemplate(HabitTemplate.NIGHT);
-        habit1.setLogLevel(LogLevel.DAILY);
-        habit1.setTotalDays("30");
-        habit1.setTargetLevel(TargetLevel.LIMITED);
-        habit1.setDateSynced("2017-12-09 11:03 p.m.");
-        habit1.setLogTime("11:03 p.m.");
-        habit1.setXmlData(xml);
-        habit1.setFingerprint(generateFingerprint());
-        habit1.setDateCreated(generateTimestamp());
-        habit1.setDevice(Build.MANUFACTURER + "|" + Build.BRAND + "|" + Build.MODEL);
-        habit1.setAppVersion(generateAppVersion());
-        habit1.setNeverSync(Booler.FALSE);
-        habit1.setPublicVisibility(Booler.FALSE);
-        habits.add(habit);
-        habits.add(habit1);*/
-
-        cardList.setAdapter(new CardAdapter(getActivity(), habits));
-        HabitSyncer habitSyncer = new HabitSyncer(getContext(), habits, getActivity());
-        habitSyncer.cloudSync();
         return rootView;
     }
 
-    public String generateFingerprint() {
-        String uuid = UUID.randomUUID().toString();
-        return uuid;
+    private void syncWithServer() {
+        HabitSyncer syncer = new HabitSyncer(getContext(), habits, getActivity(), "sangeethnandakumar@gmail.com");
+        syncer.setOnSyncStatusListner(new HabitSyncer.OnSyncStatusListner() {
+            @Override
+            public void onSyncSuccess(String acknoledge) {
+                refreshHabits();
+                swipe.setRefreshing(false);
+                Snackbar.make(getActivity().findViewById(R.id.dashboard_ui), acknoledge, Snackbar.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onSyncFailed() {
+                swipe.setRefreshing(false);
+                Snackbar.make(getActivity().findViewById(R.id.dashboard_ui), "Syncing failed", Snackbar.LENGTH_LONG).show();
+            }
+        });
+        syncer.cloudSync();
     }
 
-    private String generateAppVersion() {
-        PackageManager manager = getContext().getPackageManager();
-        PackageInfo info = null;
-        try {
-            info = manager.getPackageInfo(getContext().getPackageName(), 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        String version = info.versionName;
-        return version;
+
+    public void refreshHabits() {
+        cardList = rootView.findViewById(R.id.card_list);
+        habits = new ArrayList<>();
+        database = new Database(getContext());
+        habits = database.fetchHabits("sangeethnandakumar@gmail.com");
+        adapter = new CardAdapter(getContext(), habits, getActivity());
+        cardList.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        cardList.invalidate();
     }
 
-    private String generateTimestamp() {
-        Date d = new Date();
-        CharSequence s = DateFormat.format("yyyy-MM-dd hh:mm a", d.getTime());
-        return s.toString();
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshHabits();
     }
-
 }

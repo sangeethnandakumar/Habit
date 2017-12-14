@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/other"
+        android:title="GENERAL" />
+
+    <item
+        android:id="@+id/health"
+        android:title="HEALTH" />
+
+    <item
+        android:id="@+id/wealth"
+        android:title="WEALTH" />
+
+    <item
+        android:id="@+id/knowledge"
+        android:title="KNOWLEDGE" />
+
+    <item
+        android:id="@+id/cooking"
+        android:title="COOKING" />
+
+</menu>

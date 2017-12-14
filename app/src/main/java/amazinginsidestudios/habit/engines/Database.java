@@ -7,11 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import amazinginsidestudios.habit.components.Habit;
@@ -130,51 +126,6 @@ public class Database {
         for (int i = 0; i < habits.size(); i++) {
             insertHabit(habits.get(i));
         }
-    }
-
-    public long dayDifference(String fromDate, String toDate) {
-        fromDate = fromDate.split(" ")[0];
-        toDate = toDate.split(" ")[0];
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        //FROM DATE
-        Date from = null;
-        try {
-            from = formatter.parse(fromDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Calendar fromCalender = Calendar.getInstance();
-        fromCalender.setTime(from);
-        //TO DATE
-        Date to = null;
-        try {
-            to = formatter.parse(toDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Calendar toCalender = Calendar.getInstance();
-        toCalender.setTime(to);
-        //CALCULATE
-        long diff = toCalender.getTimeInMillis() - fromCalender.getTimeInMillis();
-        long days = diff / (24 * 60 * 60 * 1000);
-        return days;
-    }
-
-    public long dayDifference(String thatDay) {
-        thatDay = thatDay.split(" ")[0];
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date d = null;
-        try {
-            d = formatter.parse(thatDay);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Calendar thatCallender = Calendar.getInstance();
-        thatCallender.setTime(d);
-        Calendar todayCallender = Calendar.getInstance();
-        long diff = todayCallender.getTimeInMillis() - thatCallender.getTimeInMillis();
-        long days = diff / (24 * 60 * 60 * 1000);
-        return days;
     }
 
     public void deleteHabit(String fingerprint) {

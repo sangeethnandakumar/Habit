@@ -5,7 +5,9 @@ package amazinginsidestudios.habit.components;
  */
 
 public enum Color {
-    GREEN,
-    RED,
-    PURPLE
+    DEFAULT_COLOR,
+    BLOOD_RED,
+    SKY_BLUE,
+    TOUGH_GREEN,
+    GOLD_YELLOW
 }

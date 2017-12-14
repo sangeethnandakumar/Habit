@@ -14,7 +14,7 @@ public class Habit {
     public Color color;
     public String totalDays;
     public String completedDays;
-    public Booler publicVisibility;
+    public PublicVisibility publicVisibility;
     public HabitTemplate habitTemplate;
     public String account;
     public String fingerprint;
@@ -35,7 +35,12 @@ public class Habit {
     public Habit() {
     }
 
-    public void setPublicVisibility(Booler publicVisibility) {
+
+    public PublicVisibility getPublicVisibility() {
+        return publicVisibility;
+    }
+
+    public void setPublicVisibility(PublicVisibility publicVisibility) {
         this.publicVisibility = publicVisibility;
     }
 
@@ -123,7 +128,7 @@ public class Habit {
         this.completedDays = completedDays;
     }
 
-    public Booler isPublicVisibility() {
+    public PublicVisibility isPublicVisibility() {
         return publicVisibility;
     }
 

@@ -84,8 +84,12 @@ public class FriendsCardAdapter extends BaseAdapter {
 
         switch (habits.get(i).getHabitTemplate())
         {
-            case NIGHT:
-                Picasso.with(context).load("http://amazinginside.esy.es/amazinginsidestudios/habit/night_profile.jpg").into(card_template_friends_bg);
+            case RUNNING:
+                Picasso.with(context).load("http://amazinginside.esy.es/amazinginsidestudios/habit/running/running.jpg").into(card_template_friends_bg);
+            case ABS:
+                Picasso.with(context).load("http://amazinginside.esy.es/amazinginsidestudios/habit/abs/abs.jpg").into(card_template_friends_bg);
+            case PUSH_UP:
+                Picasso.with(context).load("http://amazinginside.esy.es/amazinginsidestudios/habit/pushup/pushup.jpg").into(card_template_friends_bg);
         }
         return v;
     }

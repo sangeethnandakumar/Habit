@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -26,8 +23,8 @@
                     android:id="@+id/card_template_bg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
                     android:background="#263238"
+                    android:scaleType="centerCrop"
                     card_view:layout_constraintEnd_toEndOf="parent"
                     card_view:layout_constraintStart_toStartOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +41,6 @@
                     card_view:srcCompat="@drawable/card_menupopup_white" />
 
                 <TextView
-                    android:textColor="#ffffff"
                     android:id="@+id/card_template_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,13 +48,14 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/autor"
                     android:text="Run 10Kms"
+                    android:textColor="#ffffff"
                     android:textSize="24sp"
                     android:typeface="normal"
                     card_view:layout_constraintStart_toStartOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/log_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -77,8 +74,8 @@
                     android:background="?attr/selectableItemBackground"
                     android:text="SKIP"
                     android:textColor="#bdbdbd"
-                    card_view:layout_constraintBaseline_toBaselineOf="@+id/button4"
-                    card_view:layout_constraintEnd_toStartOf="@+id/button4" />
+                    card_view:layout_constraintBaseline_toBaselineOf="@+id/log_button"
+                    card_view:layout_constraintEnd_toStartOf="@+id/log_button" />
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
 

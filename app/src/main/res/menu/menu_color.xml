@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/default_color"
+        android:title="DEFAULT COLOR" />
+
+    <item
+        android:id="@+id/blood_red"
+        android:title="BLOOD RED" />
+
+    <item
+        android:id="@+id/sky_blue"
+        android:title="SKY BLUE" />
+
+    <item
+        android:id="@+id/tough_green"
+        android:title="TOUGH GREEN" />
+
+    <item
+        android:id="@+id/gold_yellow"
+        android:title="GOLD YELLOW" />
+</menu>

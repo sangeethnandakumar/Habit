@@ -12,4 +12,8 @@
     <item
         android:id="@+id/menu_habit_info"
         android:title="Habit info" />
+
+    <item
+        android:id="@+id/menu_delete_habit"
+        android:title="Delete" />
 </menu>

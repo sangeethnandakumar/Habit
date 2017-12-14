@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/daily"
+        android:title="DAILY" />
+
+    <item
+        android:id="@+id/weekly"
+        android:title="WEEKLY" />
+
+    <item
+        android:id="@+id/monthly"
+        android:title="MONTHLY" />
+
+</menu>

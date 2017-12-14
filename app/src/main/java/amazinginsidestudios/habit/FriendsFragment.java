@@ -8,12 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import amazinginsidestudios.habit.components.Habit;
-import amazinginsidestudios.habit.components.HabitTemplate;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,20 +25,7 @@ public class FriendsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_friends, container, false);
 
-        cardFriendsList = rootView.findViewById(R.id.card_friends_list);
-        List<Habit> myhabits=new ArrayList<>();
 
-        Habit temp = new Habit();
-        temp.setName("Test");
-        temp.setHabitTemplate(HabitTemplate.NIGHT);
-        myhabits.add(temp);
-
-        Habit temp2 = new Habit();
-        temp2.setName("Read a Book");
-        temp2.setHabitTemplate(HabitTemplate.NIGHT);
-        myhabits.add(temp2);
-
-        cardFriendsList.setAdapter(new FriendsCardAdapter(getActivity(),myhabits));
 
         return rootView;
     }

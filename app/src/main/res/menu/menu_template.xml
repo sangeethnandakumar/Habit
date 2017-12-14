@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/yes_or_no"
+        android:title="YES OR NO" />
+
+    <item
+        android:id="@+id/running"
+        android:title="RUNNING" />
+
+    <item
+        android:id="@+id/abs"
+        android:title="ABS" />
+    <item
+        android:id="@+id/push_up"
+        android:title="PUSHUP" />
+
+
+</menu>

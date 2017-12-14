@@ -6,5 +6,7 @@ package amazinginsidestudios.habit.components;
 
 public enum HabitTemplate {
     YES_NO,
-    NIGHT
+    RUNNING,
+    ABS,
+    PUSH_UP
 }
