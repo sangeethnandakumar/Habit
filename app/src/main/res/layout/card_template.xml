@@ -5,8 +5,9 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/habit_card"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:layout_margin="8dp"
         card_view:cardCornerRadius="4dp">
 
@@ -54,28 +55,6 @@
                     card_view:layout_constraintStart_toStartOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/log_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:text="LOG INFORMATION"
-                    android:textColor="#bdbdbd"
-                    card_view:layout_constraintBottom_toBottomOf="@+id/card_template_bg"
-                    card_view:layout_constraintEnd_toEndOf="parent" />
-
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:text="SKIP"
-                    android:textColor="#bdbdbd"
-                    card_view:layout_constraintBaseline_toBaselineOf="@+id/log_button"
-                    card_view:layout_constraintEnd_toStartOf="@+id/log_button" />
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
 

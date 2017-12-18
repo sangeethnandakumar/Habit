@@ -123,8 +123,13 @@ public class Database {
     }
 
     public void insertHabits(List<Habit> habits) {
-        for (int i = 0; i < habits.size(); i++) {
-            insertHabit(habits.get(i));
+        try {
+            for (int i = 0; i < habits.size(); i++) {
+                insertHabit(habits.get(i));
+            }
+        } catch (Exception e) {
+            truncateHabitTable();
+            e.printStackTrace();
         }
     }
 

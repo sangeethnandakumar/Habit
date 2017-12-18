@@ -26,7 +26,7 @@
             android:theme="@style/AdditionTheme" />
         <activity
             android:name=".NewNote"
-            android:theme="@style/DayLight"></activity>
+            android:theme="@style/AdditionTheme"></activity>
         <activity
             android:name=".OpenHabit"
             android:theme="@style/AdditionTheme"></activity>

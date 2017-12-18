@@ -26,7 +26,7 @@ public class DashboardFragmentAdapter extends FragmentPagerAdapter
             case 1:
                 return new ActiveFragment();
             case 2:
-                return new CompletedFragment();
+                return new NotesFragment();
         }
         return null;
     }
