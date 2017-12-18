@@ -17,7 +17,7 @@ public class XmlCompressor {
         if (!isCompressed) {
             //Encode
             xml = xml.replace("\t", "");
-            xml = xml.replace("\n", "");
+            xml = xml.replace("\n", "@");
             xml = xml.replace("\"", "|");
             xml = xml.replace("\'", "|");
             xml = xml.replace("<", "[");
@@ -28,7 +28,7 @@ public class XmlCompressor {
         } else {
             //Encode
             xml = xml.replace("\t", "");
-            xml = xml.replace("\n", "");
+            xml = xml.replace("@", "\n");
             xml = xml.replace("|", "\'");
             xml = xml.replace("[", "<");
             xml = xml.replace("]", ">");

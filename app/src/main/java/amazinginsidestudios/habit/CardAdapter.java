@@ -8,12 +8,12 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -44,7 +44,7 @@ public class CardAdapter extends BaseAdapter {
     ImageButton popupmenu_yes_no, popupmenu_template;
     View v = null;
     Database database;
-    Button log_button;
+    CardView habit_card;
 
     public CardAdapter(Context context, List<Habit> habits, Activity activity) {
         this.context = context;
@@ -69,11 +69,9 @@ public class CardAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup)
-    {
-        if (habits.get(i).getHabitTemplate()== HabitTemplate.YES_NO)
-        {
-            v=View.inflate(context,R.layout.card_yes_no,null);
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        if (habits.get(i).getHabitTemplate() == HabitTemplate.YES_NO) {
+            v = View.inflate(context, R.layout.card_yes_no, null);
             perfomYesNoCard(i);
         } else {
             v = View.inflate(context, R.layout.card_template, null);
@@ -83,7 +81,7 @@ public class CardAdapter extends BaseAdapter {
         return v;
     }
 
-    public void perfomYesNoCard(int i) {
+    public void perfomYesNoCard(final int i) {
         name = v.findViewById(R.id.card_yes_no_name);
         popupmenu_yes_no = v.findViewById(R.id.popupmenu_yes_no);
         name.setText(habits.get(i).getName());
@@ -97,7 +95,8 @@ public class CardAdapter extends BaseAdapter {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
-                            case R.id.menu_sync_now:
+                            case R.id.menu_delete_habit:
+                                deleteMenu(i);
                                 break;
                         }
                         return false;
@@ -110,11 +109,11 @@ public class CardAdapter extends BaseAdapter {
 
     public void performTemplateCard(final int i) {
         name = v.findViewById(R.id.card_template_name);
-        log_button = v.findViewById(R.id.log_button);
+        habit_card = v.findViewById(R.id.habit_card);
         card_template_bg = v.findViewById(R.id.card_template_bg);
         popupmenu_template = v.findViewById(R.id.popupmenu_template);
 
-        log_button.setOnClickListener(new View.OnClickListener() {
+        habit_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(activity, OpenHabit.class);
