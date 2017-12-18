@@ -22,37 +22,41 @@ import amazinginsidestudios.habit.engines.HabitSyncer;
  * A simple {@link Fragment} subclass.
  */
 public class ActiveFragment extends Fragment {
+    //Declare variables
     ListView cardList;
     CardAdapter adapter;
     Database database;
     List<Habit> habits;
     SwipeRefreshLayout swipe;
+    HabitSyncer syncer;
     private View rootView = null;
 
     public ActiveFragment() {
         // Required empty public constructor
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    //Init methord
+    public void init(LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_active, container, false);
         swipe = rootView.findViewById(R.id.swiperefresh);
+        cardList = rootView.findViewById(R.id.card_list);
+        habits = new ArrayList<>();
+        database = new Database(getContext());
+        syncer = new HabitSyncer(getContext(), habits, getActivity(), accountServer());
+    }
+
+    //Listners
+    public void listners() {
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 syncWithServer();
             }
         });
-
-        return rootView;
-    }
-
-    private void syncWithServer() {
-        HabitSyncer syncer = new HabitSyncer(getContext(), habits, getActivity(), "sangeethnandakumar@gmail.com");
         syncer.setOnSyncStatusListner(new HabitSyncer.OnSyncStatusListner() {
             @Override
             public void onSyncSuccess(String acknoledge) {
-                refreshHabits();
+                refreshHabits(accountServer());
                 swipe.setRefreshing(false);
                 Snackbar.make(getActivity().findViewById(R.id.dashboard_ui), acknoledge, Snackbar.LENGTH_LONG).show();
             }
@@ -63,15 +67,26 @@ public class ActiveFragment extends Fragment {
                 Snackbar.make(getActivity().findViewById(R.id.dashboard_ui), "Syncing failed", Snackbar.LENGTH_LONG).show();
             }
         });
+    }
+
+    //Account server
+    private String accountServer() {
+        return "sangeethnandakumar@gmail.com";
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        init(inflater, container);
+        listners();
+        return rootView;
+    }
+
+    private void syncWithServer() {
         syncer.cloudSync();
     }
 
-
-    public void refreshHabits() {
-        cardList = rootView.findViewById(R.id.card_list);
-        habits = new ArrayList<>();
-        database = new Database(getContext());
-        habits = database.fetchHabits("sangeethnandakumar@gmail.com");
+    private void refreshHabits(String account) {
+        habits = database.fetchHabits(account);
         adapter = new CardAdapter(getContext(), habits, getActivity());
         cardList.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -81,6 +96,6 @@ public class ActiveFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        refreshHabits();
+        refreshHabits(accountServer());
     }
 }
